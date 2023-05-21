@@ -1,0 +1,276 @@
+@import 'navbar';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+// hero delen
+.hero {
+  background-color: $light; // sätter bakgrundsfärgen på elementet med klassen "hero" till en variabel som heter "$light".
+
+  &__container { // ställer in layouten för en container i herodelen på webbplatsen. Den är uppdelad i två delar, centrerad lodrätt och vågrätt på sidan. container har en maximal bredd på 1200px
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    margin: 0 auto;
+    height: 90vh;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px; // vet inte varför men om jag ändrar värdet blir mina .product divs aldrig centrerade
+    padding-right: 24px;
+    padding-left: 24px;
+
+    @include tablet { // den här koden använder en mixin för att tillämpa styles på containern när skärmens bredd motsvarar en surfplatta. den ändrar alltså layouten för att ha endast en kolumn och sätter höjden på behållaren till 100% av viewportens höjd
+      grid-template-columns: 1fr;
+      height: 100%;
+    }
+
+    &--left { // stilar den vänstra kolumnen i hero-sektionens container. det ställer in width till 100% och height till 1.2. På surfplattor lägger det till padding överst och längst ned, och på mobiler ändrar det linjehöjden till 1.5
+      width: 100%;
+      line-height: 1.2;
+
+      @include tablet {
+        padding: 5rem 0;
+      }
+
+      @include mobile {
+        line-height: 1.5;
+      }
+    }
+
+    &--left h1 {
+      font-size: 4rem; /* sätter storleken på rubriken */
+      color: $blue; /* sätter textfärgen på rubriken */
+
+      @include mobile {
+        font-size: 1.5rem; /* ändrar storleken på rubriken för mobiler */
+      }
+    }
+
+    &--left h2 {
+      font-size: 4rem; /* sätter storleken på underrubriken */
+      color: $dark; /* sätter textfärgen på underrubriken */
+
+      @include mobile {
+        font-size: 2rem; /* ändrar storleken på underrubriken för mobiler */
+      }
+    }
+
+    &--left p {
+      font-size: 2rem; /* sätter storleken på texten */
+      color: $dark; /* sätter textfärgen på texten */
+      margin-top: 1rem; /* sätter avståndet mellan element och texten */
+      font-weight: 700; /* sätter textens tjocklek */
+
+      @include mobile {
+        font-size: 1.5rem; /* ändrar storleken på texten för mobiler */
+      }
+    }
+
+    &--btn { 
+      font-size: 1rem; /* sätter storleken på texten i knappen */
+      background-color: $blue; 
+      padding: 14px 32px; 
+      border: none; 
+      border-radius: 4px; 
+      color: $light; /* sätter textfärgen i knappen */
+      margin-top: 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    &--btn a {
+      position: relative;
+      z-index: 2;
+      color: $light; // sätter färgen på knappen
+      text-decoration: none;
+    }
+
+    &--btn:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: $orangeRed; /* Sätt bakgrundsfärgen för elementet */
+      transition: all 0.3s;
+      border-radius: 4px;
+    }
+
+    &--btn:hover:after {
+      width: 100%;
+    }
+
+    &--right {
+      text-align: center;
+    }
+
+    &--img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// mixin för produkt box
+@mixin product-box($background-color, $light) {
+  background-color: $dark; //sätter backgrundsfärgen
+  border: 1px solid $dark; // sätter färgen på gränsen och tjocklek
+  padding: $dark, 20px; // padding inuti boxen
+  border-radius: 10px; //sätter rundade hörn på boxen
+  justify-content: center;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  padding: 20px; 
+}
+
+
+.product {
+  @include product-box(#f2f2f2, #ddd); // Inkluderar mixin product box som finns ovanför
+  flex-basis: calc(25% - 40px); 
+  margin: 10px 20px; 
+  text-align: center;
+  justify-content: space-between;
+  background-color: $dark;
+
+  h1 {
+    color: $light;
+  }
+
+  p {
+    color: $light;
+  }
+
+  span {
+    display: block;
+    font-weight: bold;
+    color: $light;
+  }
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: $dark; 
+  color: #fff; 
+  padding: 5px;
+}
+
+// Denna mixin tar fyra parametrar ($x, $y, $blur, $color) med standardvärden om inga värden anges.
+@mixin box-shadow($x: 0, $y: 10px, $blur: 20px, $color: rgba(0, 0, 0, 0.15)) {
+  box-shadow: $x $y $blur $color;   // Använder de angivna värdena för att skapa en CSS 'box-shadow'.
+}
+
+.card {
+  @include box-shadow(2px, 2px, 4px, rgba(0, 0, 0, 0.5));
+  width: 1200px;
+  height: 300px;
+  background-color: #fafafa;
+  padding: 20px;
+}
+
+.card-inherited {
+  // inherit 
+  border: 1px solid #ddd;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin section-padding {
+  padding: 50px 0;
+}
+
+@mixin btn-styling {
+  background-color: $blue;
+  color: $light;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: darken($blue, 10%);
+  }
+}
+
+// About us Section styling
+#aboutus {
+  @include section-padding;
+  background-color: $light;
+  
+  .hero__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: $light;
+
+    header, main, footer {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    h1, h2 {
+      color: $dark;
+      font-size: 2.5rem;
+    }
+
+    p {
+      color: $dark;
+      font-size: 1rem;
+    }
+
+    footer {
+      align-self: flex-end;
+      color: $dark;
+      font-size: 1rem;
+    }
+
+    .div-centered {
+      @include flex-center;
+      flex-direction: column;
+    }
+
+    .hero__container--btn {
+      @include btn-styling;
+
+      a {
+        color: $light;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}

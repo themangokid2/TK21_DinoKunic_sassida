@@ -1,0 +1,11 @@
+@mixin tablet {
+  @media screen and (max-width: 768px) { // sätter max width för surfplattor för att få plats med sidan på en mindre skärm
+    @content; // @content skickar ett block av innehåll till en mixin som kan inkluderas vid punkten där @content definieras inom  en mixin
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 280px) { // samma sak fast för mobiler, därför är max width 280px och inte 768px
+    @content; //  @content skickar ett block av innehåll till en mixin som kan inkluderas vid punkten där @content definieras inom  en mixin
+  }
+}

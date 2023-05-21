@@ -1,0 +1,300 @@
+@charset "UTF-8";
+.navbar__menu--links, .navbar__menu, .navbar__logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar {
+  background: #f7f7f7;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem calc((100vw - 1200px) / 2); /* Sätter padding av elementet genom en beräkning på viewport width */
+  z-index: 10;
+  position: relative;
+}
+.navbar__logo {
+  color: #222121;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: 24px;
+}
+.navbar__bars {
+  opacity: 0;
+}
+@media screen and (max-width: 768px) {
+  .navbar__bars {
+    color: #222121;
+    opacity: 1;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    font-size: 2rem;
+  }
+}
+.navbar__menu {
+  list-style: none;
+  text-align: center;
+  margin-right: 24px;
+}
+@media screen and (max-width: 768px) {
+  .navbar__menu {
+    display: none;
+  }
+}
+.navbar__menu--links {
+  color: #222121;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0 1rem;
+}
+.navbar__menu--links:hover {
+  color: #2541b2;
+  transition: all 0.3s ease;
+}
+.navbar__menu #button {
+  padding: 12px 24px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: #2541b2;
+  margin-left: 16px;
+  color: #f7f7f7;
+}
+.navbar__menu #button:hover {
+  background: #fb4b4e;
+  transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background-color: #f7f7f7;
+}
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  margin: 0 auto;
+  height: 90vh;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+@media screen and (max-width: 768px) {
+  .hero__container {
+    grid-template-columns: 1fr;
+    height: 100%;
+  }
+}
+.hero__container--left {
+  width: 100%;
+  line-height: 1.2;
+}
+@media screen and (max-width: 768px) {
+  .hero__container--left {
+    padding: 5rem 0;
+  }
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left {
+    line-height: 1.5;
+  }
+}
+.hero__container--left h1 {
+  font-size: 4rem; /* sätter storleken på rubriken */
+  color: #2541b2; /* sätter textfärgen på rubriken */
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left h1 {
+    font-size: 1.5rem; /* ändrar storleken på rubriken för mobiler */
+  }
+}
+.hero__container--left h2 {
+  font-size: 4rem; /* sätter storleken på underrubriken */
+  color: #222121; /* sätter textfärgen på underrubriken */
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left h2 {
+    font-size: 2rem; /* ändrar storleken på underrubriken för mobiler */
+  }
+}
+.hero__container--left p {
+  font-size: 2rem; /* sätter storleken på texten */
+  color: #222121; /* sätter textfärgen på texten */
+  margin-top: 1rem; /* sätter avståndet mellan element och texten */
+  font-weight: 700; /* sätter textens tjocklek */
+}
+@media screen and (max-width: 280px) {
+  .hero__container--left p {
+    font-size: 1.5rem; /* ändrar storleken på texten för mobiler */
+  }
+}
+.hero__container--btn {
+  font-size: 1rem; /* sätter storleken på texten i knappen */
+  background-color: #2541b2;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 4px;
+  color: #f7f7f7; /* sätter textfärgen i knappen */
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+  outline: none;
+}
+.hero__container--btn a {
+  position: relative;
+  z-index: 2;
+  color: #f7f7f7;
+  text-decoration: none;
+}
+.hero__container--btn:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #fb4b4e; /* Sätt bakgrundsfärgen för elementet */
+  transition: all 0.3s;
+  border-radius: 4px;
+}
+.hero__container--btn:hover:after {
+  width: 100%;
+}
+.hero__container--right {
+  text-align: center;
+}
+.hero__container--img {
+  height: 100%;
+  width: 100%;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product {
+  background-color: #222121;
+  border: 1px solid #222121;
+  padding: #222121, 20px;
+  border-radius: 10px;
+  justify-content: center;
+  flex-basis: calc(25% - 40px);
+  margin: 10px 20px;
+  text-align: center;
+  justify-content: space-between;
+  background-color: #222121;
+}
+.product h1 {
+  color: #f7f7f7;
+}
+.product p {
+  color: #f7f7f7;
+}
+.product span {
+  display: block;
+  font-weight: bold;
+  color: #f7f7f7;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #222121;
+  color: #fff;
+  padding: 5px;
+}
+
+.card {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: 1200px;
+  height: 300px;
+  background-color: #fafafa;
+  padding: 20px;
+}
+
+.card-inherited {
+  border: 1px solid #ddd;
+}
+
+#aboutus {
+  padding: 50px 0;
+  background-color: #f7f7f7;
+}
+#aboutus .hero__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+#aboutus .hero__container header, #aboutus .hero__container main, #aboutus .hero__container footer {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 40px;
+}
+#aboutus .hero__container h1, #aboutus .hero__container h2 {
+  color: #222121;
+  font-size: 2.5rem;
+}
+#aboutus .hero__container p {
+  color: #222121;
+  font-size: 1rem;
+}
+#aboutus .hero__container footer {
+  align-self: flex-end;
+  color: #222121;
+  font-size: 1rem;
+}
+#aboutus .hero__container .div-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#aboutus .hero__container .hero__container--btn {
+  background-color: #2541b2;
+  color: #f7f7f7;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+#aboutus .hero__container .hero__container--btn:hover {
+  background-color: #1c3288;
+}
+#aboutus .hero__container .hero__container--btn a {
+  color: #f7f7f7;
+  text-decoration: none;
+}
+
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */
