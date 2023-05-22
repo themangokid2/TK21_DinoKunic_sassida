@@ -183,16 +183,24 @@ html {
 
 .card {
   @include box-shadow(2px, 2px, 4px, rgba(0, 0, 0, 0.5));
-  width: 1200px;
-  height: 300px;
+  width: 100%; // full width on all devices
+  max-width: 1200px; // but won't exceed 1200px
+  height: auto; // adjust height automatically
   background-color: #fafafa;
   padding: 20px;
+}
+
+@media only screen and (min-width: 768px) { // when the viewport is 768px or larger
+  .card {
+    height: 300px; // fixed height for larger screens
+  }
 }
 
 .card-inherited {
   // inherit 
   border: 1px solid #ddd;
 }
+
 
 @mixin flex-center {
   display: flex;

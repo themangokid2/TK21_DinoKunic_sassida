@@ -230,12 +230,18 @@ html {
 
 .card {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  width: 1200px;
-  height: 300px;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
   background-color: #fafafa;
   padding: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .card {
+    height: 300px;
+  }
+}
 .card-inherited {
   border: 1px solid #ddd;
 }
